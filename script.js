@@ -15,8 +15,8 @@ let header_template = `<div class="container">
   </div>
   
   <div class="menu-logo">
-    <img class="menu-logo-img" width="30" src="https://cdn-icons-png.flaticon.com/512/5259/5259008.png " alt="">
-    <div class="header-line-mobile">
+    <img id="menu-logo-img" class="menu-logo-img" width="30" src="https://cdn-icons-png.flaticon.com/512/5259/5259008.png " alt="">
+    <div id="mobile-menu" class="header-line-mobile">
       <div class="header-logo-mobile">
         <img src="imgs/Group 1188midlogo.png" width="180">
       </div>
@@ -24,13 +24,31 @@ let header_template = `<div class="container">
         <a href="" class="nav-url-mobile">Салоны</a>
         <a href="" class="nav-url-mobile">Парихмахерские</a>
       </div>
+      <button  id="nav-mobile-btn" class="nav-mobile-background"></button>
     </div>
-    <div>
+</div>
+    
     </div>
   </div>
 </div>
 <div class="header-block"></div>
 </div>`
 let header = document.getElementById('header')
-
 header.innerHTML += header_template
+
+let nav_menu = document.getElementById('mobile-menu')
+let nav_mobile_background = document.getElementById('nav-mobile-btn')
+let menu_logo = document.getElementById('menu-logo-img')
+
+menu_logo.onclick = function (){
+    menu_logo.src = 'https://icon-icons.com/icons2/2518/PNG/512/x_icon_150997.png'
+    nav_menu.style.left = '0'
+    nav_mobile_background.style.display = 'block'
+}
+nav_mobile_background.onclick = function  () {
+    
+    nav_menu.style.left = "-100%"
+    nav_mobile_background.style.display = 'none'
+    menu_logo.src = 'https://cdn-icons-png.flaticon.com/512/5259/5259008.png '
+
+}
