@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <title>Document</title>
+</head>
+<body>
+  <div class="header" id="header">
+    <div class="un-header-line">
+
+    </div>
+    <!-- generate header from script -->
+  </div>
+  <div class="article">
+    <div class="container">
+      <div class="block-title"> 
+        Находите салоны красоты и СПА в Fix Master 
+        <br>
+        
+        <br>
+        <hr>
+        <select class="filters" name="" id="">
+            <option value="">Все организации</option>
+            <option value="">Салон красоты</option>
+            <option value="">СПА</option>
+        </select>
+    
+        <select class="filters" id="filters">
+            <option value="">Все услуги</option>
+            <option value="">Массаж</option>
+            <option value="">Стрижка</option>
+        </select>
+      </div>
+
+     <div class="cards" id="cards">
+      <script>
+        let data = `<a href="detail.html">
+        <div class="card">
+          <div class="card-image">
+            <img class="card-img" src="imgs/Frame 2 (2).png" alt="">
+          </div>
+          <div class="card-title">
+            Just Beauty
+          </div>
+          <div class="card-address">
+           <img width="14px" src="https://icon-icons.com/icons2/2460/PNG/512/location_pin_place_map_address_placeholder_icon_149107.png" alt=""> пр-т. Акушинского, 30м, Махачкала, Респ. Дагестан
+          </div>
+          <div class="card-work-schedule">
+            График работы:  ПН - ПТ   10:00 - 21:00 <br>
+            через 3 часа закроется
+          </div>
+          <div class="card-status open">
+            Открыто
+          </div>
+        </div>
+      </a>`
+        let cards = document.getElementById('cards')
+        Array(1,2,3,4,5,6,7,8,1,1,1,1).forEach(element => {
+          cards.innerHTML += data
+        });
+        
+      </script> 
+      <script src="script.js"></script>
+     </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+        <div class="footer-line">
+            <div class="footer-logo">
+                <img src="imgs/Group 39514.png" alt="" width="400">
+            </div>
+            <div class="footer-nav">
+                <a href="@" class="footer-nav-url">О нас</a>
+                <a href="@" class="footer-nav-url">СПА</a>
+                <a href="@" class="footer-nav-url">Салоны</a>
+                <a href="@" class="footer-nav-url">Парихмахерские</a>
+            </div>
+            <div class="footer-contacts">
+                
+            </div>
+        </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
