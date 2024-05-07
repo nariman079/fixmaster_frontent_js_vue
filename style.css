@@ -18,7 +18,7 @@
       margin: 0px 200px;
       
     }
-    
+
     .header-line-mobile{
       display: none;
       background: white;
@@ -176,6 +176,15 @@
     .footer-nav-url{
         margin-right: 5px;        
     }
+    .social-nets{
+        display: flex;
+        justify-content: right;
+        
+    }
+    .social-nets a{
+        margin-top: 10px;
+        margin-left: 10px;
+    }
     @media (max-width:1560px) {
       .cards{
         grid-template-columns: repeat(3, 320px); 
@@ -260,8 +269,9 @@
             gap: 5px;
   
           }
+        
           .footer-logo img{
-            width: 120px;
+            width: 240px;
         }
     }
     @media  (max-width:390px) {

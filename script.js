@@ -40,12 +40,12 @@ let nav_menu = document.getElementById('mobile-menu')
 let nav_mobile_background = document.getElementById('nav-mobile-btn')
 let menu_logo = document.getElementById('menu-logo-img')
 
-menu_logo.onclick = function (){
+menu_logo.onclick =async function (){
     menu_logo.src = 'https://icon-icons.com/icons2/2518/PNG/512/x_icon_150997.png'
     nav_menu.style.left = '0'
     nav_mobile_background.style.display = 'block'
 }
-nav_mobile_background.onclick = function  () {
+nav_mobile_background.onclick = async function  () {
     
     nav_menu.style.left = "-100%"
     nav_mobile_background.style.display = 'none'
