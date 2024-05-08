@@ -191,8 +191,10 @@
     }
     .article-header{
       background-color: #FFEEEE;
+      border: 30px solid #FFEEEE;
     }
     .slider {
+  
       width: 100%;
       height: 700px;
       position: relative;
