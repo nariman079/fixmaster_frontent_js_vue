@@ -163,3 +163,4 @@ if (window.outerWidth < 650){
 }
 
 showImage(currentIndex);
+

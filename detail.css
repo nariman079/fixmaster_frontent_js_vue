@@ -62,9 +62,16 @@
     flex-direction: column;
     width: 100%;
     margin-bottom: 5px;
+    
 }   
 .accordion__content{
+    height: 0;
     display: none;
+    flex-direction: column;
+    padding: 20px;
+    
+    overflow: hidden;
+    background-color: #936CFF;
 }
 .accordion__title {
     display: flex;
@@ -74,15 +81,49 @@
     font-weight: 900;
     cursor: pointer;
     color: #ffffff;
-    background-color: #7100E3;
+    background-color: #936CFF;
     padding: 0 20px;
 }
 .accordion__title span{
     display: inline-flex;
     background-color: transparent;
     transform: rotate(0);
-    transition: transform 0.5 ease-out;
 }
 .accordion__title:hover span{
     transform: rotate(-90deg);
+}
+
+.accordion:hover .accordion__content{
+    display: flex;
+    height: max-content;
+    
+    
+}
+.services{
+    display: flex;
+    flex-direction: column;
+}
+.service-wrapper{
+    margin-top: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+}
+.service-main-info{
+    display: flex;
+    justify-content: space-between;
+}
+.service-title{
+    font-size: 20px;
+    font-weight: 600;
+
+}
+.service-title p{
+    padding-bottom: 10px;
+    margin: 0;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: right;
 }
