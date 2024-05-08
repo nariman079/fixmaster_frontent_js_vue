@@ -242,11 +242,11 @@
       border: none;
       font-size: 90px;
       border-radius: 12px;
-      background-color: #280051;
+      background-color: #936CFF;
       outline: none;
-      color: #7b7b7b;
+      color: #ffffff;
       padding: 10px;
-      opacity: 30%;
+      opacity: 15%;
     }
     .counter {  
       position: absolute;
