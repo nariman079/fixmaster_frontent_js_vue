@@ -95,10 +95,7 @@ function showImage(index) {
 
 let next_btn = document.getElementById('next')
 let prev_btn = document.getElementById('prev')
-
-next_btn.onclick = () => {
-  
-
+function nextSlide() {
   let index = currentIndex + 1;
   counters[index-1].classList.remove('c-index')
   counters[index].classList.add('c-index')
@@ -108,9 +105,7 @@ next_btn.onclick = () => {
   console.log(index);
   showImage(index);
 }
-
-prev_btn.onclick = () => {
-
+function prevSlide(params) {
   let index = currentIndex - 1;
   counters[index+1].classList.remove('c-index')
   counters[index].classList.add('c-index')
@@ -118,6 +113,53 @@ prev_btn.onclick = () => {
         index = images.length - 1;
       }
       showImage(index);
+}
+next_btn.onclick = nextSlide
+
+prev_btn.onclick = prevSlide
+
+if (window.outerWidth < 650){
+  next_btn.style.display = 'none'
+  prev_btn.style.display = 'none'
+  console.log(window.innerWidth)
+  const slider = document.getElementById('slider')
+
+  let startPoint;
+  let moved = false;
+  
+  function touch(e) {
+    e.preventDefault();
+    startPoint = e.changedTouches[0].pageX;
+  }
+  function move(e) {
+    if (moved) {
+      return;
+    }
+    e.preventDefault();
+    if (e.changedTouches[0].pageX > startPoint + slider.offsetWidth / 4) {
+      
+      moved = true;
+      prevSlide()
+    }
+    if (e.changedTouches[0].pageX < startPoint - slider.offsetWidth / 4) {
+      
+
+      
+      console.log('Налево')
+      
+      moved = true;
+      nextSlide()
+    
+       }
+  }
+  
+  slider.ontouchstart = touch
+  slider.ontouchmove = move
+  slider.addEventListener("touchend", () => {
+    setTimeout(() => {
+      moved = !moved;
+    }, 200);
+  });
 }
 
 showImage(currentIndex);
