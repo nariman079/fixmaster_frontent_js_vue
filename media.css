@@ -205,7 +205,14 @@
         width: 200px;
         height: max-content;
     }
-      }
+    .employee-name {
+        margin-left: 20px;
+        font-weight: 600;
+        font-size: 16px;
+    }
+    .employee-skills{
+        font-size: 12px;
+    }
   @media  (max-width:390px) {
     
     
@@ -247,6 +254,6 @@
         margin-top: 5px;
     
 }
-
+    
       
   }

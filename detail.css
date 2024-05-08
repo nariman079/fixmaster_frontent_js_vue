@@ -127,3 +127,48 @@
     font-size: 14px;
     text-align: right;
 }
+.service-description{
+    font-size: 14px;
+}
+.employees{
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-wrapper{
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.employee-main-info{
+    display: flex;
+    align-items: center;
+}
+.employee-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.employee-image img{
+    width: 50px;
+    
+    border-radius: 50px;
+    
+    
+    
+}
+.employee-name {
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 20px;
+}
+.employee-skills{
+    font-size: 14px;
+    margin: 10px;
+}
