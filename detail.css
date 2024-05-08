@@ -19,9 +19,8 @@
     display: flex;
 }
 .actions a{
-
         margin-left: 5px;
-    
+        text-align: center;
 }
 
 .booking-btn {
@@ -50,18 +49,13 @@
 .article-block {
     display: grid;
     grid-template-columns: 1fr  360px;
-    
     gap: 10px;
-
-
 }
 
 .organization-blocks {
     margin-top: 20px;
     background-color: none;
     width: 100%;
-    
-    
 }
 .accordion{
     display: flex;
@@ -71,10 +65,8 @@
 }   
 .accordion__content{
     display: none;
-    
 }
 .accordion__title {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -87,8 +79,6 @@
 }
 .accordion__title span{
     display: inline-flex;
-   
-   
     background-color: transparent;
     transform: rotate(0);
     transition: transform 0.5 ease-out;
