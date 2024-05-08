@@ -185,10 +185,111 @@
         margin-top: 10px;
         margin-left: 10px;
     }
+    .article-header{
+      background-color: #FFEEEE;
+    }
+    .slider {
+      width: 100%;
+      height: 700px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .detail-organization-title{
+      font-size: 100px;
+      padding: 30px;
+      font-weight: 600;
+    } 
+    .slider img {
+      
+      width: 60%;
+      height: auto;
+      background-size: cover;
+      position: absolute;
+      top: 3%;
+      left: 20%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .slider img.active {
+      opacity: 1;
+    }
+    
+    .slider button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    
+    .slider .prev {
+      left: 10px;
+    }
+    
+    .slider .next {
+      right: 10px;
+    }
+    .slider-btn{
+      border: none;
+      font-size: 90px;
+      border-radius: 12px;
+      background-color: #280051;
+      outline: none;
+      color: #7b7b7b;
+      padding: 10px;
+      opacity: 30%;
+    }
+    .counter {  
+      position: absolute;
+      
+      bottom: 0;
+      
+      
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 10px;
+    }
+    .count{
+      margin: 2px;
+      background-color: #7100E3;
+      border-radius: 5px;
+      width: 10px;
+      height: 10px;
+
+    }
+    .c-index{
+      background-color: #280051;
+    }
     @media (max-width:1560px) {
       .cards{
         grid-template-columns: repeat(3, 320px); 
 
+      }
+      .slider {
+        
+        height: 500px;
+        
+        
+      }
+      .detail-organization-title{
+        font-size: 50px;
+        padding: 30px;
+        font-weight: 600;
+      } 
+      .slider img {
+        
+        width: 70%;
+       
+        top: 1%;
+        left: 15%;
+      }
+      .slider-btn{
+        font-size: 50px;
       }
     }
     
@@ -196,15 +297,6 @@
         .container{
           margin: 0px 100px;
         }
-        
-    }
-    @media (max-width:1060px) {
-        .cards{
-          grid-template-columns: repeat(2, 320px); 
-  
-        }
-      }
-    @media  (max-width:1270px) {
         .logo{
           display: block;
         }
@@ -212,12 +304,62 @@
           display: none;
         }
     }
+    
+  
+    @media (max-width:1060px) {
+      .cards{
+        grid-template-columns: repeat(2, 320px); 
+
+      }
+      .slider {
+      
+        height: 400px;
+        
+        
+      }
+      .detail-organization-title{
+        font-size: 40px;
+        padding: 30px;
+        font-weight: 600;
+      } 
+      .slider img {
+        
+        width: 80%;
+       
+        top: 1%;
+        left: 10%;
+      }
+      .slider-btn{
+        font-size: 50px;
+      }
+      .footer-line{
+        flex-direction: column;
+        margin-top: 40px;
+        justify-content: space-evenly;
+    }
+    }
     @media  (max-width:840px) {
-        .footer-line{
-            flex-direction: column;
-            margin-top: 40px;
-            justify-content: space-evenly;
-        }
+      .slider {
+      
+        height: 400px;
+        
+        
+      }
+      .detail-organization-title{
+        font-size: 30px;
+        padding: 30px;
+        font-weight: 600;
+      } 
+      .slider img {
+        
+        width: 90%;
+       
+        top: 1%;
+        left: 5%;
+      }
+      .slider-btn{
+        font-size: 50px;
+      }
         .container{
           margin: 0px 30px;
         }
@@ -273,6 +415,44 @@
           .footer-logo img{
             width: 240px;
         }
+        .slider {
+      
+          height: 350px;
+          
+          
+        }
+        .detail-organization-title{
+          font-size: 30px;
+          padding: 15px;
+          font-weight: 600;
+        } 
+        .slider img {
+          
+          width: 90%;
+         
+          top: 1%;
+          left: 5%;
+        }
+        .slider-btn{
+          font-size: 40px;
+        }
+    }
+    @media (max-width:460px) {
+      .slider {
+      
+        height: 250px;
+        
+        
+      }
+      .detail-organization-title{
+        font-size: 20px;
+        padding: 10px;
+        font-weight: 600;
+      } 
+      
+      .slider-btn{
+        font-size: 20px;
+      }
     }
     @media  (max-width:390px) {
         .container{
@@ -292,7 +472,17 @@
         .search-input{
           padding: 0px;
         }
+        .slider {
+      
+          height: 200px;
+          
+          
+        }
+      
         
+        .slider-btn{
+          font-size: 20px;
+        }
         
        
         

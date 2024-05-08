@@ -33,12 +33,39 @@ let header_template = `<div class="container">
 </div>
 <div class="header-block"></div>
 </div>`
+let footer_template = `<div class="container">
+<div class="footer-line">
+    <div class="footer-logo">
+        <img src="imgs/Group 39514.png" alt="" width="400">
+    </div>
+    <div class="footer-nav">
+        <a href="@" class="footer-nav-url">О нас</a>
+        <a href="@" class="footer-nav-url">СПА</a>
+        <a href="@" class="footer-nav-url">Салоны</a>
+        <a href="@" class="footer-nav-url">Парихмахерские</a>
+    </div>
+    <div class="footer-contacts">
+        <div class="mail">
+            fix-master@gmail.com
+        </div>
+        <div class="social-nets">
+            <a href=""><img src="https://icon-icons.com/icons2/3717/PNG/512/telegram_chat_brand_communication_message_free_icon_230295.png" width="30px" alt=""></a>
+            <a href=""><img src="https://icon-icons.com/icons2/3717/PNG/512/telegram_chat_brand_communication_message_free_icon_230295.png" width="30px" alt=""></a>
+
+        </div>
+    </div>
+</div>
+</div>`
+let count_template = `<div class="count"></div>`
 let header = document.getElementById('header')
+let footer = document.getElementById('footer')
 header.innerHTML += header_template
+footer.innerHTML += footer_template
 
 let nav_menu = document.getElementById('mobile-menu')
 let nav_mobile_background = document.getElementById('nav-mobile-btn')
 let menu_logo = document.getElementById('menu-logo-img')
+let counter = document.getElementById('counter')
 
 menu_logo.onclick =async function (){
     menu_logo.src = 'https://icon-icons.com/icons2/2518/PNG/512/x_icon_150997.png'
@@ -52,3 +79,45 @@ nav_mobile_background.onclick = async function  () {
     menu_logo.src = 'https://cdn-icons-png.flaticon.com/512/5259/5259008.png '
 
 }
+let currentIndex = 0;
+const images = document.querySelectorAll('.slider img');
+images.forEach(element => {
+  counter.innerHTML += count_template
+});
+const counters = document.querySelectorAll('.counter .count')
+counters[0].classList.add('c-index')
+
+function showImage(index) {
+  images[currentIndex].classList.remove('active');
+  images[index].classList.add('active');
+  currentIndex = index;
+}
+
+let next_btn = document.getElementById('next')
+let prev_btn = document.getElementById('prev')
+
+next_btn.onclick = () => {
+  
+
+  let index = currentIndex + 1;
+  counters[index-1].classList.remove('c-index')
+  counters[index].classList.add('c-index')
+  if (index >= images.length) {
+    index = 0;
+  }
+  console.log(index);
+  showImage(index);
+}
+
+prev_btn.onclick = () => {
+
+  let index = currentIndex - 1;
+  counters[index+1].classList.remove('c-index')
+  counters[index].classList.add('c-index')
+      if (index < 0) {
+        index = images.length - 1;
+      }
+      showImage(index);
+}
+
+showImage(currentIndex);
