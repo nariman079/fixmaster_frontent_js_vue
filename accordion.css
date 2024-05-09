@@ -138,3 +138,46 @@
     color: rgb(159, 159, 159);
     background-color: #bebebe;
 }
+.additional-information{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.additional-information input, textarea{
+    padding: 15px 20px;
+    width: 90%;
+    margin: 10px;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+}
+
+.additional-information textarea{
+    height: 100px;
+}
+
+.accept_checkbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.accept_checkbox label{
+    width: 90%;
+    color: black;
+}
+.accept_checkbox input{
+    width: 10%;
+}
+.application-btn{
+    margin: 20px;
+    background-color: #7100E3;
+    border: 2px solid white;
+    border-radius: 6px;
+    width:90%;
+    padding: 20px 40px;
+    color: white;
+    font-size: 20px;
+}
