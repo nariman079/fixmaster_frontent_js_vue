@@ -5,6 +5,7 @@
     body{
       margin: 0;
       padding: 0;
+      
     }
     a{
       text-decoration: none;
@@ -164,6 +165,9 @@
         outline: none;
         font-family: 'Manrope', sans-serif;
         font-size: 22;
+    }
+    .footer{
+      align-self: end;
     }
     .footer-line{
         height: 300px;
