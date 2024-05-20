@@ -9,8 +9,11 @@
                 <router-link to="/"><img class="logo" src="@/assets/imgs/Group 1187logo.png" alt="" width="30px"></router-link>
               </div>
               <div class="search">
+                <datalist id="suggestions">
+                 <option v-for="result in searchResult" :key="result.id"><router-link to="/">{{ result.title }}</router-link></option>
+                </datalist>
                 <img src="@/assets/imgs/Group 1189.png" alt="" width="20">
-                <input class="search-input" type="text" placeholder="Поиск">
+                <input list="suggestions" @change="searchOrganization()" v-model="searchText" class="search-input" type="text" placeholder="Поиск">
               </div>
               
               <div class="nav">
@@ -23,7 +26,7 @@
                 <img @click="openMenu" id="menu-logo-img" ref="menu_logo_img" class="menu-logo-img" width="30" src="https://cdn-icons-png.flaticon.com/512/5259/5259008.png " alt="">
                 <div ref="nav_menu" id="mobile-menu" class="header-line-mobile">
                   <div class="header-logo-mobile">
-                    <a href="/"><img src="@/assets/imgs/Group 1188midlogo.png" width="180"></a>
+                    <router-link to="/"><img src="@/assets/imgs/Group 1188midlogo.png" width="180"></router-link>
                   </div>
                   <div class="nav-mobile">
                     <a href="" class="nav-url-mobile">Салоны</a>
@@ -43,6 +46,14 @@
   <script>
   export default {
     name: 'c_Header',
+    data() {
+      return {
+        searchUrl: process.env.VUE_APP_BACKEND_URL + '/organization/search/',
+        searchText: '',
+        searchResult: []
+      }
+    },
+    
     mounted() {
       
     },
@@ -57,8 +68,18 @@
         this.$refs.nav_menu.style.left = "-100%",
         this.$refs.nav_menu_backround.style.display = 'none'
         this.$refs.menu_logo_img.src = 'https://cdn-icons-png.flaticon.com/512/5259/5259008.png '
-      }
+      },
+      async searchOrganization() {
+        const response = await fetch(this.searchUrl + '?search='  + this.searchText, {
+          method: "GET",
+          
+        })
 
+        const jsonData = await response.json()
+        const searchOrganizationServerData = jsonData.data
+        this.searchResult = searchOrganizationServerData
+        console.log("Test")
+      }
     }
 
   }
