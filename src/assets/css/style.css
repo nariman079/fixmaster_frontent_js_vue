@@ -5,6 +5,7 @@
     body{
       margin: 0;
       padding: 0;
+      
     }
     a{
       text-decoration: none;
@@ -140,18 +141,25 @@
     .card-img{
         height: 197px;
         background-size: cover;
+        display: block;
+        margin: auto;
     }
     .card-title{
       font-weight: 500;
       font-size: 20px;
-      padding: 3px;
+      padding: 5px;
+      margin-left: 7px;
     }
     .card-address, .card-status, .card-work-schedule{
       font-size: 12px;
       padding: 3px;
+      margin-left: 8px;
     }
     .open{
       color: #65CD18;
+    }
+    .close{
+      color: rgb(189, 0, 0);
     }
     .filters {
         margin-bottom: 5px;
@@ -165,6 +173,9 @@
         font-family: 'Manrope', sans-serif;
         font-size: 22;
     }
+    .footer{
+      align-self: end;
+    }
     .footer-line{
         height: 300px;
         display: flex;
@@ -172,7 +183,6 @@
         align-items: center;
     }
     .footer-nav{
-        
         display: grid;
         gap: 5px;
         grid-template-columns: 100px 100px;
@@ -194,7 +204,6 @@
       border: 30px solid #FFEEEE;
     }
     .slider {
-  
       width: 100%;
       height: 700px;
       position: relative;

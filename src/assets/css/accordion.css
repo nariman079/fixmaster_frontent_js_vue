@@ -1,0 +1,183 @@
+.accordion {
+    margin-top: 40px;
+    display: grid;
+    flex-direction: column;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    
+  }
+  
+  .accordion-item {
+    margin-bottom: 5px;
+    
+  }
+  
+  .accordion-header {
+    background-color: #7100E3;
+    color: #ffffff;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight:600;
+    cursor: pointer;
+  }
+
+
+
+  .accordion-content {
+    display: none;
+    padding: 10px;
+    transition: max-height 0.3s ease; /* добавлен переход для максимальной высоты */
+    background-color: #7100E3;
+
+  }
+  
+  .accordion-item.active .accordion-content {
+    display: block;
+  }
+  .services{
+    display: flex;
+    flex-direction: column;
+    max-height: 200px; /* высота контента (можете настроить на свой вкус) */
+
+}
+.service-wrapper{
+    margin-top: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+}
+.service-main-info{
+    display: flex;
+    justify-content: space-between;
+}
+.service-title{
+    font-size: 20px;
+    font-weight: 600;
+
+}
+.service-title p{
+    padding-bottom: 10px;
+    margin: 0;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: right;
+}
+.service-description{
+    font-size: 14px;
+}
+.employees{
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-wrapper{
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.employee-main-info{
+    display: flex;
+    align-items: center;
+}
+.employee-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.employee-image img{
+    width: 50px;
+    
+    border-radius: 50px;
+    
+    
+    
+}
+.employee-name {
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 20px;
+}
+.employee-skills{
+    font-size: 14px;
+    margin: 10px;
+}
+.datetime-select{
+    display: flex;
+    flex-direction: column;
+}
+.date-select{
+    padding: 20px;
+    font-size: 20px;
+    color: #ffffff;
+    align-self: flex-start;
+}
+.date-select input{
+    padding: 10px 20px;
+}
+.time-select {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.time-select button{
+    padding: 10px;
+    font-size: 20px;
+   
+    border: none;
+}
+.free_time{
+    color: rgb(159, 159, 159);
+    background-color: #bebebe;
+}
+.additional-information{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.additional-information input, textarea{
+    padding: 15px 20px;
+    width: 90%;
+    margin: 10px;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+}
+
+.additional-information textarea{
+    height: 100px;
+}
+
+.accept_checkbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.accept_checkbox label{
+    width: 90%;
+    color: black;
+}
+.accept_checkbox input{
+    width: 10%;
+}
+.application-btn{
+    margin: 20px;
+    background-color: #7100E3;
+    border: 2px solid white;
+    border-radius: 6px;
+    width:90%;
+    padding: 20px 40px;
+    color: white;
+    font-size: 20px;
+}
