@@ -158,6 +158,9 @@
     .open{
       color: #65CD18;
     }
+    .close{
+      color: rgb(189, 0, 0);
+    }
     .filters {
         margin-bottom: 5px;
         

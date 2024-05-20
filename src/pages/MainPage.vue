@@ -37,8 +37,11 @@
                     График работы:  {{ organization.work_schedule }}   {{ organization.time_begin }} - {{ organization.time_end }} <br>
                     {{ organization.closed_on }}
                   </div>
-                  <div class="card-status open">
-                    {{ organization.status }}
+                  <div class="card-status open" v-if="organization.is_open">
+                    Открыто
+                  </div>
+                  <div class="card-status close" v-else>
+                    Закрыто
                   </div>
                 </div>
               </router-link>
