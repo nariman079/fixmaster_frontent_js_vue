@@ -24,20 +24,20 @@
               <router-link   v-for="organization in organizationList" :key="organization.id" to="/">
                 <div class="card">
                   <div class="card-image">
-                    <img class="card-img" :src="organization.main_image" alt="">
+                    <img class="card-img"  :src="organization?.main_image" alt="">
                   </div>
                   <div class="card-title">
-                    {{  organization.title }}
+                    {{  organization?.title }}
                   </div>
                   <div class="card-address">
                    <img width="14px" src="https://icon-icons.com/icons2/2460/PNG/512/location_pin_place_map_address_placeholder_icon_149107.png" alt=""> 
-                   {{ organization.address }}
+                   {{ organization?.address }}
                   </div>
                   <div class="card-work-schedule">
-                    График работы:  {{ organization.work_schedule }}   {{ organization.time_begin }} - {{ organization.time_end }} <br>
-                    {{ organization.closed_on }}
+                    График работы:  {{ organization?.work_schedule }}   {{ organization?.time_begin }} - {{ organization?.time_end }} <br>
+                    {{ organization?.closed_on }}
                   </div>
-                  <div class="card-status open" v-if="organization.is_open">
+                  <div class="card-status open" v-if="organization?.is_open">
                     Открыто
                   </div>
                   <div class="card-status close" v-else>

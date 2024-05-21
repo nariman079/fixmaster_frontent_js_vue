@@ -251,13 +251,10 @@
       }
       
     .actions{
-        
         flex-direction: column;
     }
     .actions a{
-
         margin-top: 5px;
-    
 }
     
       
