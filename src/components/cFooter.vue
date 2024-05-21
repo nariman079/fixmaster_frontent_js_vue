@@ -5,13 +5,13 @@
             <a href="/"><img src="@/assets/imgs/Group 39514.png" alt="" width="400"></a>
             </div>
             <div class="footer-nav">
-                <a href="@" class="footer-nav-url">О нас</a>
+                <router-link to="/" class="footer-nav-url">О нас</router-link>
 
-                <a v-for="type in type_list" 
+                <router-link to="/" v-for="type in type_list" 
                     :key="type.id" 
                     href="@" 
                     class="footer-nav-url"
-                >{{ type.title }}</a>
+                >{{ type.title }}</router-link>
               
             </div>
             <div class="footer-contacts">
