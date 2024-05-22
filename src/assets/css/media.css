@@ -185,25 +185,19 @@
   @media (max-width:460px) {
     
     .slider {
-    
       height: 250px;
-      
-      
     }
     .detail-organization-title{
       font-size: 20px;
       padding: 10px;
       font-weight: 600;
     } 
-    
     .slider-btn{
       font-size: 20px;
     }
-    
     .organization-info {
         align-items: flex-start;
         padding: 0;
-       
     }
     .place-info-address{
         width: 200px;
