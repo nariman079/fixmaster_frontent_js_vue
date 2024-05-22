@@ -11,15 +11,14 @@
                     <option value="all">Все организации</option>
                     <option v-for="organizationType in organizatinTypeList" :key="organizationType.id" :value="organizationType.id">{{ organizationType.title }}</option>
                 </select>
-                <select class="filters" id="filters">
-                    <option value="">Все услуги</option>
-                    <option value="">Массаж</option>
-                    <option value="">Стрижка</option>
+                <select @change="selectService" class="filters" id="filters">
+                    <option value="all">Все услуги</option>
+                    <option v-for="service in servicesList" :key="service.id" :value="service.id">{{ service.title }}</option>
                 </select>
               </div>
         
              <div class="cards" id="cards">
-              <router-link   v-for="organization in organizationList" :key="organization.id" to="/">
+              <router-link :to="`organization/`+organization.id"   v-for="organization in organizationList" :key="organization.id" >
                 <div class="card">
                   <div class="card-image">
                     <img class="card-img"  :src="organization?.main_image" alt="">
@@ -55,13 +54,17 @@
     mounted (){
       this.getAllOrganizations()
       this.getOrganizationTypes()
+      this.getService()
     },
     data () {
       return {
+        servicesUrl: process.env.VUE_APP_BACKEND_URL + '/services/',
+        servicesList: [],
         organizationApiUrl:process.env.VUE_APP_BACKEND_URL + '/organizations',
         organizationTypeApiUrl: process.env.VUE_APP_BACKEND_URL + '/organizations-types',
         organizationList: [],
         organizatinTypeList: []
+
       }
     },
     methods: {
@@ -90,6 +93,17 @@
         this.organizatinTypeList = organizationTypeDataList
       
       },
+      async getService(){
+            const response = await fetch(
+                this.servicesUrl, {
+                    
+                }
+            )
+            const jsonData = await response.json()
+            const services =  jsonData.data
+            this.servicesList = services
+
+          },
       async selectOrganizationType(e){
         if (e.target.value  === 'all'){
           const response = await fetch(this.$data.organizationApiUrl, {
@@ -105,6 +119,34 @@
         }
         else{
           const response = await fetch(this.$data.organizationApiUrl+`/?organization_type=${e.target.value}`, {
+          method: "get",
+          headers: {
+            "Content-Type":"application/json"
+          }
+        })
+        const parseJson = await response.json()
+        const organizationDataList = parseJson.data
+
+        this.organizationList = organizationDataList
+        }
+        
+        
+      },
+      async selectService(e){
+        if (e.target.value  === 'all'){
+          const response = await fetch(this.$data.organizationApiUrl, {
+          method: "get",
+          headers: {
+            "Content-Type":"application/json"
+          }
+        })
+        const parseJson = await response.json()
+        const organizationDataList = parseJson.data
+
+        this.organizationList = organizationDataList
+        }
+        else{
+          const response = await fetch(this.$data.organizationApiUrl+`/?master__service=${e.target.value}`, {
           method: "get",
           headers: {
             "Content-Type":"application/json"
