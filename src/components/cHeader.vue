@@ -19,7 +19,7 @@
                   <input @input="searchOrganization" @focusout="unFocusInput" v-model="searchText" class="search-input" type="text" id="search-input" autocomplete="off" placeholder="Начните ввод...">
                 </div>
                 <div ref="dropdown" id="dropdown" class="dropdown-content ">
-                  <router-link :to="`/organization/`+result.id" class="dropdown-item" v-for="result in searchResult" :key="result.id">{{ result.title }}</router-link>
+                  <div @click="pushDetailPage(result.id)" class="dropdown-item" v-for="result in searchResult" :key="result.id">{{ result.title }}</div>
                 </div>
               </div>
               
@@ -75,6 +75,18 @@
         this.$refs.nav_menu_backround.style.display = 'none'
         this.$refs.menu_logo_img.src = 'https://cdn-icons-png.flaticon.com/512/5259/5259008.png '
       },
+      pushDetailPage(id) {
+        this.$router.push({
+          name:'organization',
+          params: {
+            id: id 
+          }
+        }).then(() => {
+    window.location.reload()
+  })
+       
+      }
+      ,
       async searchOrganization() {
         const response = await fetch(this.searchUrl + '?search='  + this.searchText, {
           method: "GET",
