@@ -19,7 +19,7 @@
                   <input @input="searchOrganization" @focusout="unFocusInput" v-model="searchText" class="search-input" type="text" id="search-input" autocomplete="off" placeholder="Начните ввод...">
                 </div>
                 <div ref="dropdown" id="dropdown" class="dropdown-content ">
-                  <router-link to="/organizations" class="dropdown-item" v-for="result in searchResult" :key="result.id">{{ result.title }}</router-link>
+                  <router-link :to="`/organization/`+result.id" class="dropdown-item" v-for="result in searchResult" :key="result.id">{{ result.title }}</router-link>
                 </div>
               </div>
               
