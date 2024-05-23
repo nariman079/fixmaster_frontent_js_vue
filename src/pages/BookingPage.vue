@@ -30,7 +30,7 @@
                       <div class="accordion-header">Выбрать услугу</div>
                       <div class="accordion-content">
                         <div id="services" class="services">
-                        <div @click="selectService(service.id)" v-for="service in organization.services" :key="service.id" class="service-wrapper">
+                        <div @click="selectService(service.id)" v-for="service in organization.services" :key="service.id" :class="['service-wrapper', {'active': bookingData.service_ids.includes(service.id)}]">
                             <div class="service-main-info">
                               <div class="service-title">
                                 {{ service.title }}
@@ -217,12 +217,13 @@ export default {
         selectMaster(masterId, event){
             if (this.bookingData.master_id === masterId){
                 this.bookingData.master_id = null;
+                
             }
             else {
                 this.bookingData.master_id = masterId
             }
             
-            
+            this.bookingData.service_ids = []
 
             console.log(event.target.classList)
             
@@ -233,7 +234,6 @@ export default {
             }
             else {
                 this.bookingData.service_ids.push(serviceId)
-
             }
             console.log(this.bookingData.service_ids)
         }
