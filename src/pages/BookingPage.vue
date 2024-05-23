@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="article">
-      
             <div class="container"> 
                 <div class="block-title">Бронирование услуг в {{ organization.title }}
                 </div>
@@ -69,16 +68,17 @@
                         <div class="accordion-header">Дополнительная информация</div>
                         <div class="accordion-content">
                             <div class="additional-information">
-                                <input type="text" placeholder="Имя">
-                                <input type="text" placeholder="Номер телефона">
-                                <textarea name="" id="" placeholder="Коментарий" cols="40"></textarea>
+                                <input @input="clearErrorList" required v-model="bookingData.customer_name" type="text" placeholder="Имя">
+                                <input @input="clearErrorList" required v-model="bookingData.customer_phone" type="text" placeholder="Номер телефона">
+                                <textarea  v-model="bookingData.customer_notice" name="" id="" placeholder="Коментарий" cols="40"></textarea>
                                 <div class="accept_checkbox">
                                     <input type="checkbox"  id="accept_checbox">
                                     <label for="accept_checbox">Даю согласие на обработку персональных данных</label>
-                    
                                 </div>
-                                <button class="application-btn" type="submit">Записаться</button>
-                                
+                                <button @click="sendBookingData" class="application-btn" type="button" >Записаться</button>
+                                <ul>
+                                    <li class="error" v-for="(error, index) in errorList" :key="index">{{ error }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -88,95 +88,39 @@
     </div>
 </template>
 <script>
+
 export default {
     name: "BookingPage",
     data (){
         return {
+            errorList:[],
+            organizationUrl:process.env.VUE_APP_BACKEND_URL + '/organizations/' + this.$route.params.id,
+            orderCreateUrl: process.env.VUE_APP_BACKEND_URL + '/order/create/',
             freeTimesUrl: process.env.VUE_APP_BACKEND_URL + '/booking/get-free-times/',
             bookingData: {
-                master_id: 1,
+                master_id: null,
                 service_ids: [],
-                begin_date: '',
-                begin_time: '',
-                customer_phone: '',
-                customer_name:'',
-                customer_notice: ''
+                begin_date: null,
+                begin_time: null,
+                customer_phone: null,
+                customer_name: null,
+                customer_notice: null
             },
             freeTimes: [],
-            organization: { id: 1,
-                            main_image: "https://booking.fix-mst.ru/media/business/salon3.jpg",
-                            time_begin: "06:00",
-                            time_end: "18:00",
-                            is_open: true,
-                            gallery: [],
-                            masters: [
-                                {
-                                    id: 1,
-                                    image: "https://booking.fix-mst.ru/media/master/Screenshot_from_2024-05-19_14-05-50.png",
-                                    name: "Виктория",
-                                    surname: "Шуменко",
-                                    services: [
-                                        {
-                                            id: 1,
-                                            title: "Стрижка"
-                                        },
-                                        {
-                                            id: 2,
-                                            title: "Укладка"
-                                        }
-                                    ]
-                                },
-                                {
-                                    id: 2,
-                                    image: "https://booking.fix-mst.ru/media/master/Screenshot_from_2024-05-19_14-05-50.png",
-                                    name: "Бро",
-                                    surname: "Брович",
-                                    services: [
-                                        {
-                                            id: 1,
-                                            title: "Стрижка"
-                                        },
-                                        {
-                                            id: 2,
-                                            title: "Укладка"
-                                        }
-                                    ]
-                                }
-                            ],
-                            services: [
-                                {
-                                    id: 1,
-                                    title: "Стрижка",
-                                    short_description: "Стрижка для обеспечения головы",
-                                    price: 1000,
-                                    min_time: 90
-                                },
-                                {
-                                    id: 2,
-                                    title: "Укладка",
-                                    short_description: "Укладка для укладки головы",
-                                    price: 500,
-                                    min_time: 30
-                                }
-                            ],
-                            telegram_id: "",
-                            title: "Студия красоты - Лето",
-                            address: "Калашный пер. 4/1 (м.Арбатская",
-                            contact_phone: "89288894224",
-                            work_schedule: "5/2",
-                            is_verified: true,
-                            organization_type: 3
-                        }
-        }
+            organization: {}}
     },
     mounted (){
       this.startPage()
+      this.getOrganization()
     },
     methods: {
             removeValueFromArray(value, array) {
         return array.filter(function(item) {
         return item !== value;
         });
+        },
+        clearErrorList(){
+            this.errorList = []
         },
         parseSkills(services){
             let result_title = ''
@@ -196,6 +140,16 @@ export default {
             });
             });
   });
+        },
+        async getOrganization(){
+            const response = await fetch(
+                this.organizationUrl, {
+                    method: "GET"
+                }
+            )
+            const jsonData = await response.json()
+            this.organization = jsonData.data
+
         },
         async getFreeTimes(){
             const response = await fetch(
@@ -221,6 +175,7 @@ export default {
             } else if (time.is_free) {
                 this.bookingData.begin_time = time.time
             } 
+            this.errorList = []
         },
         selectMaster(masterId){
             if (this.bookingData.master_id === masterId){
@@ -232,6 +187,7 @@ export default {
             }
             
             this.bookingData.service_ids = []
+            this.errorList  = []
 
             
         },
@@ -243,11 +199,59 @@ export default {
                 this.bookingData.service_ids.push(serviceId)
             }
             console.log(this.bookingData.service_ids)
+            this.errorList = []
+        },
+        async requestBookingData(){
+            const response = await fetch(
+                this.orderCreateUrl,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.bookingData)
+                }
+            )
+            const jsonData = await response.json()
+            this.freeTimes = jsonData.data
+            console.log(jsonData)
+        },
+        sendBookingData(){
+            if (this.errorList.length == 0){
+                if (this.bookingData.master_id === null){
+                this.errorList.push("Выберите мастера")
+                }
+                if (this.bookingData.service_ids.length === 0){
+                    this.errorList.push('Выберите услугу')
+                }
+                if (this.bookingData.begin_date === null){
+                    this.errorList.push('Выберите дату')
+                }
+                if (this.bookingData.begin_time === null){
+                    this.errorList.push('Выберите время')
+                }
+                if (this.bookingData.customer_name === null){
+                    this.errorList.push('Введите имя')
+                }
+                if (this.bookingData.customer_phone === null){
+                    this.errorList.push('Введите номер телефона')
+                }
+                if (this.errorList.length == 0){
+                    this.requestBookingData()
+                }
+                 
+            }   
+            
+            
         }
 
     }
 }
 </script>
-<style lang="">
-    
+<style >
+    .error{
+        font-size: 21px;
+        text-align: left;
+        color: #ffadad;
+    }
 </style>
