@@ -78,7 +78,7 @@
                     </div>
                     <div class="actions">
                       <a :href="`tel:${organization.contact_phone}`" class="call-btn">Позвонить</a>
-                      <a href="/order.html" class="booking-btn">Записаться онлайн</a>
+                      <a @click="bookingPush(organization.id)" class="booking-btn">Записаться онлайн</a>
                     </div>
                 </div>  
               </div>
@@ -105,6 +105,12 @@ export default {
     },
   
     methods: {
+        bookingPush(organizationId){
+          this.$router.push({ name:'booking', params:{id:organizationId}}).then(()=>{
+            window.location.reload()
+          })
+          
+        },
         async getOrganization(){
             const response = await fetch(
                 this.organizationUrl, {

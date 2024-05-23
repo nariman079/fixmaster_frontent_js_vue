@@ -16,10 +16,17 @@
   }
   
   .accordion-item {
+    position: relative;
     margin-bottom: 5px;
+
     
   }
-  
+  .employee-wrapper.active{
+    border: 3px outset #000000;
+    padding: 23px;
+    transition: all 0.001s ease ;
+    
+  }
   .accordion-header {
     background-color: #7100E3;
     color: #ffffff;
@@ -33,16 +40,22 @@
 
 
   .accordion-content {
+    z-index: 10;
     display: none;
     padding: 10px;
     transition: max-height 0.3s ease; /* добавлен переход для максимальной высоты */
     background-color: #7100E3;
 
   }
+
   
   .accordion-item.active .accordion-content {
     display: block;
+    
+    
   }
+
+  
   .services{
     display: flex;
     flex-direction: column;
