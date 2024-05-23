@@ -162,6 +162,10 @@
    
     border: none;
 }
+.time-select button.active {
+    border: 2px solid black;
+    transition: all 0.001s ease;
+}
 .free_time{
     color: rgb(159, 159, 159);
     background-color: #bebebe;

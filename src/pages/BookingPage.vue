@@ -52,12 +52,12 @@
                     <div class="accordion-item">
                     <div class="accordion-header">Выбрать время</div>
                     <div class="accordion-content">
-                        <div class="datetime-select">
+                        <div class="datetime-select"> 
                             <div class="date-select">
                             Дата <input v-model="bookingData.begin_date" @change="getFreeTimes" type="date" name="" id="">
                             </div>
                             <div class="time-select">
-                               <button  type="button" v-for="(time, index) in freeTimes" :key="index"  :disabled="!time.is_free">
+                               <button @click="selectBookingTime(time, is_free)" :class="{'active':this.bookingData.begin_time === time.time}" type="button" v-for="(time, index) in freeTimes" :key="index"  :disabled="!time.is_free">
                                 {{ time.time }}
                                </button> 
                             </div>
@@ -214,7 +214,15 @@ export default {
             const jsonData = await response.json()
             this.freeTimes = jsonData.data
         },
-        selectMaster(masterId, event){
+        selectBookingTime(time){
+            console.log(time)
+            if (this.bookingData.begin_time === time.time){
+                this.bookingData.begin_time = null
+            } else if (time.is_free) {
+                this.bookingData.begin_time = time.time
+            } 
+        },
+        selectMaster(masterId){
             if (this.bookingData.master_id === masterId){
                 this.bookingData.master_id = null;
                 
@@ -225,7 +233,6 @@ export default {
             
             this.bookingData.service_ids = []
 
-            console.log(event.target.classList)
             
         },
         selectService(serviceId){
