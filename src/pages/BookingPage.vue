@@ -89,6 +89,7 @@
 </template>
 <script>
 
+
 export default {
     name: "BookingPage",
     data (){
@@ -212,8 +213,14 @@ export default {
                     body: JSON.stringify(this.bookingData)
                 }
             )
+            if (response.ok){
+                this.$router.push(
+                    {
+                        name: 'successBooking'
+                    }
+                )
+            }
             const jsonData = await response.json()
-            this.freeTimes = jsonData.data
             console.log(jsonData)
         },
         sendBookingData(){
