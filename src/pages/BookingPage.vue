@@ -12,7 +12,8 @@
                             <div @click="selectMaster(master.id, $event)"  :class="['employee-wrapper', {'active': this.bookingData.master_id === master.id}]" v-for="master in organization.masters" :key="master.id">
                                 <div class="employee-main-info">
                                   <div class="employee-image">
-                                    <img :src="master.image" a  lt="">
+                                    <div :style="{backgroundImage: `url(` + master.image +`)`}" ></div>
+
                                   </div>
                                   <div class="employee-name">
                                     {{ master.name + " " + master.surname}} 
@@ -189,8 +190,6 @@ export default {
             
             this.bookingData.service_ids = []
             this.errorList  = []
-
-            
         },
         selectService(serviceId){
             if (this.bookingData.service_ids.includes(serviceId)){

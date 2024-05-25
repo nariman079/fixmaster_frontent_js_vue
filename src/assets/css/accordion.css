@@ -121,9 +121,10 @@
     align-items: center;
     
 }
-.employee-image img{
+.employee-image div{
     width: 50px;
-    
+    height: 50px;
+    background-size: cover;
     border-radius: 50px;
     
     
