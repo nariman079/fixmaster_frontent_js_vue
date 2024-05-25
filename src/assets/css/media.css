@@ -8,7 +8,7 @@
         padding: 0;
     }
     .cards{
-      grid-template-columns: repeat(3, 320px); 
+      grid-template-columns: repeat(3, 310px); 
 
     }
     .slider {
@@ -50,7 +50,11 @@
       }
   }
   
-
+  @media (max-width:1168px) {
+    .container{
+      margin: 0px 50px;
+    }
+  }
   @media (max-width:1060px) {
     .cards{
       grid-template-columns: repeat(2, 320px); 
