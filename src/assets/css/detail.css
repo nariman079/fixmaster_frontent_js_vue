@@ -150,9 +150,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     
 }
 .employee-image img{

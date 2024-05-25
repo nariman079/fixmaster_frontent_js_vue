@@ -10,11 +10,12 @@
               <div class="article-header">
                 <div class="detail-organization-title">{{ organization.title }}</div>
                 <div id="slider" class="slider">
-                    <img :class="{ 'active': index === 0 }" ref="slider_img" v-for="(image, index) in organization.gallery" :key="image.id" :src="image.image">
+                    <div :class="['img',{ 'active': index === imageIndex }]" ref="slider_img" v-for="(image, index) in organization.gallery" :key="image.id" :style="{backgroundImage:`url(`+image.image+`)`}"></div>
                     <button @click="prevImage" id="prev" class="prev controlls slider-btn">{{ "<" }}</button>
                     <button @click="nextImage" class="next controlls slider-btn">{{ ">" }}</button>
-                    <div id="counter" class="counter">    
-                </div>  
+                    <div id="counter" class="counter">
+                      <div v-for="(image, index) in organization.gallery" :key="image.id" :class="['count', { 'active': index == imageIndex }]"></div>
+                    </div>  
               </div>  
             </div>
             </div>
@@ -45,7 +46,7 @@
                         <div class="employee-wrapper" v-for="master in organization.masters" :key="master.id">
                             <div class="employee-main-info">
                               <div class="employee-image">
-                                <img :src="master.image" a  lt="">
+                                <div :style="{backgroundImage: `url(${master.image})`}" a  lt=""></div>
                               </div>
                               <div class="employee-name">
                                 {{ master.name + " " + master.surname}} 
@@ -131,16 +132,19 @@ export default {
             return result_title
         },
         showImage(index){
-        //    console.log(this.$refs.slider_img)
-            this.$refs.slider_img?.[this.imageIndex].classList.remove('active')
-            this.$refs.slider_img?.[index].classList.add('active')
             this.imageIndex = index
         },
         prevImage(){
+          if (this.imageIndex != 0){
             this.showImage(this.imageIndex-1)
+          }
+            
         },
         nextImage(){
+          console.log(this.organization.gallery.length, this.imageIndex);
+          if (this.imageIndex != this.organization.gallery.length-1){
             this.showImage(this.imageIndex+1)
+          }
         }
     }
 }
