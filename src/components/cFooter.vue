@@ -16,9 +16,12 @@
                   
                 </div>
                 <div class="footer-contacts">
-                    <div class="mail">
+                    <a href="address:Адрес: ул. Примерная, д. 123, Москва"> ул. Примерная, д. 123, Москва</a>
+                    <a href="tel:+7 (495) 123-45-67">+7 (495) 123-45-67</a>
+                    <a>Пн-Пт 9:00 - 18:00</a>
+                    <a href="mailto:fix-master@gmail.com" class="mail">
                         fix-master@gmail.com
-                    </div>
+                    </a>
                     <div class="social-nets">
                         <a href=""><img src="https://icon-icons.com/icons2/3717/PNG/512/telegram_chat_brand_communication_message_free_icon_230295.png" width="30px" alt=""></a>
                         <a href=""><img src="https://icon-icons.com/icons2/3717/PNG/512/telegram_chat_brand_communication_message_free_icon_230295.png" width="30px" alt=""></a>
@@ -27,7 +30,9 @@
             </div>
             </div>
     </footer>
-    
+    <p :style="{backgroundColor: '#7100E3',
+     margin:'0px', 
+     color: 'white'}" align="center">&copy; 2024 FixMaster. Все права защищены.</p>
 </template>
 
 <script>
