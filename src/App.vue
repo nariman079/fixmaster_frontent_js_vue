@@ -1,7 +1,11 @@
 <template>
-  <cHeader/>
-  <router-view></router-view>
-  <cFooter/>
+  
+  <div class="wrapper">
+    <cHeader/>
+    <router-view class="main"></router-view>
+    <cFooter/>
+  </div>
+  
 </template>
 
 <script>
@@ -17,40 +21,26 @@ export default {
 </script>
 
 <style>
-#app{
+html, body, #app {
+  height: 100%;
   margin: 0;
-  padding: 0;
-
-}
-body{
-  margin: 0;
-  padding: 0;
-  
-}
-a{
-  text-decoration: none;
-  color: black;
-
-}
-hr{
-  border: 1px solid;
 }
 
-*{
-  font-family: "Montserrat", sans-serif;
-  transition: all 0.3s ease;
-}
-.container{
-  margin: 0px 200px;
-  
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+.main {
+  flex: 1;
+}
 
-.block-title{
-  font-size: 30px;
-  font-weight: 600;
-}
-.article{
-  margin-top: 40px;
-}
+cFooter {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+} 
+
 </style>

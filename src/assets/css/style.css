@@ -2,10 +2,16 @@
     hr{
       border: 1px solid;
     }
-    body{
+    html, body{
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+        
       margin: 0;
-      padding: 0;
-      
+    }
+    
+    .main{
+      flex: 1;
     }
     a{
       text-decoration: none;
@@ -173,8 +179,8 @@
         font-family: 'Manrope', sans-serif;
         font-size: 22;
     }
-    .footer{
-      align-self: end;
+    .footer{ 
+    
     }
     .footer-line{
         height: 300px;

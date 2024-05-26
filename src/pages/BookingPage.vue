@@ -1,5 +1,5 @@
 <template>
-    <div>
+    
         <div class="article">
             <div class="container"> 
                 <div class="block-title">Бронирование услуг в {{ organization.title }}
@@ -70,7 +70,7 @@
                         <div class="accordion-content">
                             <div class="additional-information">
                                 <input @input="clearErrorList" required v-model="bookingData.customer_name" type="text" placeholder="Имя">
-                                <input @input="clearErrorList" required v-model="bookingData.customer_phone" type="text" placeholder="Номер телефона">
+                                <input @input="clearErrorList" ref="customer_phone" required v-model="bookingData.customer_phone" type="text" placeholder="Номер телефона">
                                 <textarea  v-model="bookingData.customer_notice" name="" id="" placeholder="Коментарий" cols="40"></textarea>
                                 <div class="accept_checkbox">
                                     <input type="checkbox"  id="accept_checbox">
@@ -86,10 +86,11 @@
                   </div>
             </div>
         </div>
-    </div>
+        
 </template>
 <script>
 
+import Inputmask from 'inputmask';
 
 export default {
     name: "BookingPage",
@@ -114,6 +115,8 @@ export default {
     mounted (){
       this.startPage()
       this.getOrganization()
+      const inputMask = new Inputmask("+7 (999) 999-99-99");
+      inputMask.mask(this.$refs.customer_phone)
     },
     methods: {
             removeValueFromArray(value, array) {
