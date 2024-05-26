@@ -192,6 +192,7 @@ export default {
             this.bookingData.service_ids = []
             this.errorList  = []
             this.bookingData.begin_date = null
+            this.freeTimes = []
         },
         selectService(serviceId){
             if (this.bookingData.service_ids.includes(serviceId)){
