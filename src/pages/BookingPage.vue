@@ -169,6 +169,7 @@ export default {
             )
             const jsonData = await response.json()
             this.freeTimes = jsonData.data
+            this.bookingData.begin_time = null
         },
         selectBookingTime(time){
             console.log(time)
@@ -190,6 +191,7 @@ export default {
             
             this.bookingData.service_ids = []
             this.errorList  = []
+            this.bookingData.begin_date = null
         },
         selectService(serviceId){
             if (this.bookingData.service_ids.includes(serviceId)){
