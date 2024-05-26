@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /success-booking/
+
+Allow: /public/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /

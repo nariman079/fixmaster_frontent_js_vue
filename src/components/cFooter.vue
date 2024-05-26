@@ -17,7 +17,7 @@
                 </div>
                 <div class="footer-contacts">
                     <a href="address:Адрес: ул. Примерная, д. 123, Москва"> ул. Примерная, д. 123, Москва</a>
-                    <a href="tel:+7 (495) 123-45-67">+7 (495) 123-45-67</a>
+                    <a href="tel:+7 (000) 000-00-00">+7 (495) 123-45-67</a>
                     <a>Пн-Пт 9:00 - 18:00</a>
                     <a href="mailto:fix-master@gmail.com" class="mail">
                         fix-master@gmail.com
