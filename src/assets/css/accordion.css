@@ -47,7 +47,10 @@
     background-color: #7100E3;
 
   }
-
+.accordion-content{
+    overflow-y: scroll;
+    
+}
   
   .accordion-item.active .accordion-content {
     display: block;
@@ -213,4 +216,10 @@
     padding: 20px 40px;
     color: white;
     font-size: 20px;
+}
+.accordion-item.not-pointer{
+    pointer-events: none;
+}
+.accordion-item.not-pointer .accordion-header{
+    opacity: 0.3;
 }

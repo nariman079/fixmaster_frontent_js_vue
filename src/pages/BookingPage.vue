@@ -26,8 +26,8 @@
                       </div>
                     </div>
                     </div>
-                    <div class="accordion-item">
-                      <div class="accordion-header">Выбрать услугу</div>
+                    <div :class="['accordion-item', {'not-pointer':bookingData.master_id == null}]">
+                      <div class="accordion-header" >Выбрать услугу</div>
                       <div class="accordion-content">
                         <div id="services" class="services">
                         <div @click="selectService(service.id)" v-for="service in organization.services" :key="service.id" :class="['service-wrapper', {'active': bookingData.service_ids.includes(service.id)}]">
@@ -49,7 +49,7 @@
                     </div>
                     
                     </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item" :class="['accordion-item', {'not-pointer':bookingData.master_id == null}]">
                     <div class="accordion-header">Выбрать время</div>
                     <div class="accordion-content">
                         <div class="datetime-select"> 
@@ -97,6 +97,7 @@ export default {
     data (){
         return {
             errorList:[],
+            masterServicesUrl: process.env.VUE_APP_BACKEND_URL + '/master/services/',
             organizationUrl:process.env.VUE_APP_BACKEND_URL + '/organizations/' + this.$route.params.id,
             orderCreateUrl: process.env.VUE_APP_BACKEND_URL + '/order/create/',
             freeTimesUrl: process.env.VUE_APP_BACKEND_URL + '/booking/get-free-times/',
@@ -145,6 +146,15 @@ export default {
             });
             });
   });
+        },
+        async getMasterServices(){
+            const response = await fetch(
+                this.masterServicesUrl + `?master_id=${this.bookingData.master_id}`, {
+                    method: "GET"
+                }
+            )
+            const jsonData = await response.json()
+            this.organization.services = jsonData.data
         },
         async getOrganization(){
             const response = await fetch(
@@ -196,6 +206,7 @@ export default {
             this.errorList  = []
             this.bookingData.begin_date = null
             this.freeTimes = []
+            this.getMasterServices()
         },
         selectService(serviceId){
             if (this.bookingData.service_ids.includes(serviceId)){
