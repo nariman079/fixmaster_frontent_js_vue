@@ -113,9 +113,12 @@ export default {
             freeTimes: [],
             organization: {}}
     },
+    created (){
+        this.getOrganization()
+    },
     mounted (){
       this.startPage()
-      this.getOrganization()
+      
       const inputMask = new Inputmask("+7 (999) 999-99-99");
       inputMask.mask(this.$refs.customer_phone)
     },
