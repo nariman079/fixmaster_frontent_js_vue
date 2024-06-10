@@ -9,7 +9,7 @@ const routes = [
   { name: 'main', path: '/', component:MainPage  },
   { name:'organization' ,path: '/organization/:id', component:DetailPage },
   { name: 'booking', path: '/booking/:id', component: BookingPage},
-  { name: 'successBooking', path: '/success-booking', component: SuccessBookingPage}
+  { name: 'successBooking', path: '/success-booking/:code', component: SuccessBookingPage}
 ]
 
 const router = createRouter({

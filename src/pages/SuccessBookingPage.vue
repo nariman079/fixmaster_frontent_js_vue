@@ -3,28 +3,34 @@
         <div class="container">
             <div class="qr-code-block">
                 <div class="qr-code">
-                    <img src="@/assets/imgs/qr-code.png" alt="">
+                    <qrcode-vue :value="'https://t.me/fix_master_client_bot?text='+$route.params.code"   :size="300" level="H" />
                 </div>
                 <div class="bot-information">
                     <div class="bot-information-title">
                         Вы успешно записаны!
                     </div>
-                    <a href="https://t.me/fix_master_client_bot" class="bot-information-url">
-                        t.me/fix_master_bot
+                    <a :href="'https://t.me/fix_master_client_bot?text='+$route.params.code" class="bot-information-url">
+                        Нажмите сюда чтобы перейди к боту 
                     </a>
                     <div class="bot-information-short-description">
                         Что бы отслеживать статус заявки перейдите по ссылке и запустите бота
                     </div>
-                    <a class="main-button" hef="/">Вернуться на главную</a>
+                    <a class="main-button" href="/">Вернуться на главную</a>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+
+import QrcodeVue from 'qrcode.vue'
+
+
 export default {
     name: "SuccessBookingPage",
-    
+    components: {
+      QrcodeVue,
+    },
 }
 
 </script>
@@ -37,9 +43,10 @@ export default {
     align-content: center;
     justify-content: center
 }
-.qr-code img{
+.qr-code canvas{
     width: 280px;
     height: 280px;
+    padding: 10px;
 }
 .bot-information{
     display: flex;

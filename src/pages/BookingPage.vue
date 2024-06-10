@@ -232,14 +232,16 @@ export default {
                 }
             )
             if (response.ok){
-                this.$router.push(
+                const jsonData = await response.json()
+                await this.$router.push(
                     {
-                        name: 'successBooking'
+                        name: 'successBooking',
+                        params: {
+                            code: jsonData.code
+                        }
                     }
                 )
             }
-            const jsonData = await response.json()
-            console.log(jsonData)
         },
         sendBookingData(){
             if (this.errorList.length == 0){
