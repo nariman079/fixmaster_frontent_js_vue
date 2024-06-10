@@ -170,8 +170,8 @@ export default {
             });
             });
   });       
-            if (this.tg_data.initDataUnsafe.user == undefined){
-                console.log(this.tg_data.initDataUnsafe.user)
+            if (this.tg_data.initDataUnsafe.user === undefined){
+                console.log(this.tg_data.initDataUnsafe)
             }
             else {
                 this.tg_data.sendData("Test")
