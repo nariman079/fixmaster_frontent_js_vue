@@ -95,10 +95,10 @@ export default {
     name: "BookingPage",
     data (){
         return {
-            customerData: {},
+            customerData: null,
             tg_data: window.Telegram.WebApp,
             errorList:[],
-            checkCustomerUrl: process.env.VUE_APP_BACKEND_URL + '/customer/check/',
+            checkCustomerUrl: "https://booking.fix-mst.ru/bot-api" + '/customer/check/',
             masterServicesUrl: process.env.VUE_APP_BACKEND_URL + '/master/services/',
             organizationUrl:process.env.VUE_APP_BACKEND_URL + '/organizations/' + this.$route.params.id,
             orderCreateUrl: process.env.VUE_APP_BACKEND_URL + '/order/create/',
@@ -117,10 +117,12 @@ export default {
     },
     created (){
         this.getOrganization()
+        this.startPage()
     },
+
     mounted (){
         
-      this.startPage()
+      
       
       const inputMask = new Inputmask("+7 (999) 999-99-99");
       inputMask.mask(this.$refs.customer_phone)
@@ -143,23 +145,22 @@ export default {
         },
         async checkCustomer (telegram_id){
             const response = await fetch(
-                this.checkCustomerUrl+`/?telegram_id=${telegram_id}`,
+                this.checkCustomerUrl+`?telegram_id=${telegram_id}`,
                 {
-                    method: "GET",
+                    method: "POST",
                     headers: {
-                        'Content-Type':'application/json',
-                        'Api-Key': 'test'
+                        'Content-Type': 'application/json',
                     }
                 }
             )
             if (response.ok){
                 const jsonData = await response.json()
-                this.customerData = jsonData.data
+                return jsonData.data
                 
             }
-            return response.ok
+            return {}
         },
-        startPage(){
+        async startPage(){
             document.addEventListener("DOMContentLoaded", function() {
             const accordionHeaders = document.querySelectorAll(".accordion-header");
         
@@ -174,10 +175,10 @@ export default {
                 console.log("Web user")
             }
             else {
-                if (this.customerData(localStorage.getItem('user_id'))){
-                    this.bookingData.customer_phone = this.customerData.phone,
-                    this.bookingData.customer_name = this.customerData.name
-                }
+                const data = await this.checkCustomer(localStorage.getItem('user_id'))
+                    this.bookingData.customer_phone = data.phone,
+                    this.bookingData.customer_name = data.name
+                
             }
             
         },
