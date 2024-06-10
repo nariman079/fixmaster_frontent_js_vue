@@ -96,7 +96,6 @@ export default {
     data (){
         return {
             customerData: null,
-            tg_data: window.Telegram.WebApp,
             errorList:[],
             checkCustomerUrl: "https://booking.fix-mst.ru/bot-api" + '/customer/check/',
             masterServicesUrl: process.env.VUE_APP_BACKEND_URL + '/master/services/',
