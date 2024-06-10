@@ -169,13 +169,12 @@ export default {
                 accordionItem.classList.toggle("active");
             });
             });
-  });           console.log(this.$route.params.user_id)
-            if (this.tg_data.initDataUnsafe.user === undefined){
-                console.log(this.tg_data.initDataUnsafe)
+  });           console.log(localStorage.getItem('user_id'))
+            if (localStorage.getItem('user_id') == null){
+                console.log("Web user")
             }
             else {
-                this.tg_data.sendData("Test")
-                if (this.customerData(this.tg_data.initDataUnsafe.user.id)){
+                if (this.customerData(localStorage.getItem('user_id'))){
                     this.bookingData.customer_phone = this.customerData.phone,
                     this.bookingData.customer_name = this.customerData.name
                 }

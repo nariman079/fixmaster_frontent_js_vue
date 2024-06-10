@@ -52,6 +52,12 @@
   export default {
     name: 'MainPage',
     mounted (){
+      if (this.$route.query.user_id == null){
+          // 
+      }
+      else{
+        localStorage.setItem('user_id', this.$route.query.user_id)
+      }
       this.getAllOrganizations()
       this.getOrganizationTypes()
       this.getService()

@@ -4,8 +4,8 @@
           <div class="container">
             <div class="header-line">
               <div class="header-logo">
-                <router-link to="/"><img class="mid-logo" src="@/assets/imgs/Group 39514.png" width="180"></router-link>
-                <router-link to="/"><img class="logo" src="@/assets/imgs/Group 1187logo.png" alt="" width="30px"></router-link>
+                <router-link :to="{name:'main'}"><img class="mid-logo" src="@/assets/imgs/Group 39514.png" width="180"></router-link>
+                <router-link :to="{name:'main'}"><img class="logo" src="@/assets/imgs/Group 1187logo.png" alt="" width="30px"></router-link>
               </div>
               <div>
                  <!-- <a v-for="result in searchResult" :key="result.id"><router-link to="/">{{ result.title }}</router-link></a> -->
