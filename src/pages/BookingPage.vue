@@ -169,9 +169,7 @@ export default {
                 accordionItem.classList.toggle("active");
             });
             });
-  });           
-                console.log(this.tg_data.initData)
-
+  });           console.log(this.$route.params.user_id)
             if (this.tg_data.initDataUnsafe.user === undefined){
                 console.log(this.tg_data.initDataUnsafe)
             }
