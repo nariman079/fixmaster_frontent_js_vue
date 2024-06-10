@@ -169,7 +169,11 @@ export default {
                 accordionItem.classList.toggle("active");
             });
             });
-  });       
+  });           var search = window.Telegram.WebApp.initData;
+                var converted = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
+                var user = JSON.parse(converted.user)
+                console.log(user)
+
             if (this.tg_data.initDataUnsafe.user === undefined){
                 console.log(this.tg_data.initDataUnsafe)
             }
