@@ -169,11 +169,12 @@ export default {
                 accordionItem.classList.toggle("active");
             });
             });
-  });
-            if (this.tg_data.initDataUnsafe.user == null){
-                console.log('HEll')
+  });       
+            if (this.tg_data.initDataUnsafe.user == undefined){
+                console.log(this.tg_data.initDataUnsafe.user)
             }
             else {
+                this.tg_data.sendData("Test")
                 if (this.customerData(this.tg_data.initDataUnsafe.user.id)){
                     this.bookingData.customer_phone = this.customerData.phone,
                     this.bookingData.customer_name = this.customerData.name
