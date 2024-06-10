@@ -61,7 +61,6 @@
                                 {{ time.time }}
                                </button> 
                             </div>
-                            
                         </div>
                     </div>
                     </div>

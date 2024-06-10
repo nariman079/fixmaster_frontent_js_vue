@@ -1,5 +1,4 @@
 <template>
-    
     <div class="header" id="header">
         <div class="un-header-line"></div>
           <div class="container">
