@@ -9,6 +9,7 @@
 </template>
 
 <script>
+
 import cHeader from './components/cHeader.vue'
 import cFooter from './components/cFooter.vue'
 export default {

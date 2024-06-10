@@ -95,7 +95,10 @@ export default {
     name: "BookingPage",
     data (){
         return {
+            customerData: {},
+            tg_data: window.Telegram.WebApp,
             errorList:[],
+            checkCustomerUrl: process.env.VUE_APP_BACKEND_URL + '/customer/check/',
             masterServicesUrl: process.env.VUE_APP_BACKEND_URL + '/master/services/',
             organizationUrl:process.env.VUE_APP_BACKEND_URL + '/organizations/' + this.$route.params.id,
             orderCreateUrl: process.env.VUE_APP_BACKEND_URL + '/order/create/',
@@ -116,6 +119,7 @@ export default {
         this.getOrganization()
     },
     mounted (){
+        
       this.startPage()
       
       const inputMask = new Inputmask("+7 (999) 999-99-99");
@@ -137,6 +141,24 @@ export default {
             });
             return result_title
         },
+        async checkCustomer (telegram_id){
+            const response = await fetch(
+                this.checkCustomerUrl+`/?telegram_id=${telegram_id}`,
+                {
+                    method: "GET",
+                    headers: {
+                        'Content-Type':'application/json',
+                        'Api-Key': 'test'
+                    }
+                }
+            )
+            if (response.ok){
+                const jsonData = await response.json()
+                this.customerData = jsonData.data
+                
+            }
+            return response.ok
+        },
         startPage(){
             document.addEventListener("DOMContentLoaded", function() {
             const accordionHeaders = document.querySelectorAll(".accordion-header");
@@ -148,6 +170,16 @@ export default {
             });
             });
   });
+            if (this.tg_data.initDataUnsafe.user == null){
+                console.log('HEll')
+            }
+            else {
+                if (this.customerData(this.tg_data.initDataUnsafe.user.id)){
+                    this.bookingData.customer_phone = this.customerData.phone,
+                    this.bookingData.customer_name = this.customerData.name
+                }
+            }
+            
         },
         async getMasterServices(){
             const response = await fetch(
